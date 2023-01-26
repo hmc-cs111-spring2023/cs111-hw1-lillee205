@@ -1,0 +1,136 @@
+* 2.1 DEFINING DOMAIN-SPECIFIC LANGUAGES
+  
+  + *domain-specific language*: a computer programming language of limited
+    expressiveness focused on a particular domain
+    + *computer programming language*: used by humans to instruct a computer to
+      do smth, so it should be easy for humans to understand but still be
+      executable by computer
+    + *language nature*: have sense of fluency where expressiveness comes from
+      not just individual expressions but also how they can be composed together
+    + *limited expressiveness*: supports bare minimum of features needed to
+      support its domain; shouldn't have extensive scope like general purpose languages
+    + *domain focus*: clear focus on a small domain
+  
+  + three different types of DSLs
+    + *external DSL*: language separate from main language of the app it works
+      with. usually has a custom syntax but can also use another language's. a
+      script in external DSL will usually be parsed by code in host application
+      + example: SQl, Awk, and XML config files for systems like Struts and Hibernate
+    + *internal DSL*: a script in an internal DSL is valid code in its
+      general-purpose language, but only uses a subset of the language's
+      features in a particular style to handle one small aspect of overall
+      system
+      + example: Lisp, Ruby
+    + *language workbench*: specialized IDE for defining and building DSLs. can
+      write DSL scripts
+
+** Boundaries of DSLs
+   + each style of DSL has diff boundary conditions
+     + commonly revolve around limited expressiveness and language nature
+
+*** Internal DSLs
+    + the boundary question is difference b/t internal DSL and normal
+      command-query API
+    + command-query API defines vocab of abstraction, whereas an internal DSL
+      adds a grammar
+    + methods of internal DSL often only make sense in context of larger
+      expression in DSL while in API, each method makes sense on its own
+    + when forming a DSL expression, you limit yourself to small subset of
+      language features
+      + common to avoid conditions, looping constructs, and variables
+*** External DSLs
+    + boundary is with general-purpose programming languages
+      + ex) R is targeted towards stats but has expressiveness of GPL, which
+        makes it not a DSL
+    + ex) regular expressions is a DSL
+    + common indicators of a DSL
+      + not turing complete
+      + avoid regular imperative control structures (conditions and loops)
+      + no variables
+      + can't define subroutines
+    + boundary can be fuzzy; a language can be a DSL used in one context, and
+      GPL used in another
+    + another boundary is w/ serialized data structures
+      + needs to have fluency, not just a series of assignments
+*** Language workbenches
+    + boundary is b/t a language workbench and any application that allows a
+      user to design their own data structure and forms
+    + critical point is language nature
+      + putting data in forms and saving them to a table doesn't feel like a
+        language
+
+** Fragmentary and Stand-alone DSLs
+   + little bits of DSL are used inside host language code
+   + for an external DSL, a good example of a fragmentary DSL is regex and SQL
+   + w/ internal DSLs, there is unit testing world.
+   + the same DSL can be used in both stand-alone and fragmentary contexts
+* 2.2 WHY USE A DSL?
+
+** Improving Development Productivity
+   + DSL provides means to more clearly communicate intent of a part of a system
+   + limited expressiveness of DSLs makes it easier to find errors
+   + provides abstraction
+
+** Communication w/ Domain Experts
+   + *COBOL fallacy: "now we can get rid of programmers and have business people
+     specify the rules themselves"
+   + domain experts will not necessarily code the DSLs themselves, but they can
+     read them and understand what the code is doing
+     + so if the programmers don't understand the specific domain, the domain
+       experts can help w/o necessarily knowing how to code
+
+** Change in Execution Context
+   + using DSL can make up for limitations in host language, allowing us to
+     express things in comfortable DSL and then generate code for actual
+     execution environment to use
+   + DSL allows same behavior to be executed in diff lang environments
+
+** Alternative Computational Model
+   + mainstream programming is mostly done with imperative model, but sometimes
+     using other methods (state machine, dependency network) is more helpful
+     + such other methods are called *declarative programming*
+     + it allows you to declare what should happen, rather than work through
+       imperative statements that describe how the behavior works
+   + DSL can make it easier to manipulate declarative programs
+
+* 2.3 PROBLEMS WITH DSLS
+
+** Language Cacophony
+   + *language cacophony problem*: using many languages is more complicated than
+     using a single one
+   + however, DSLs are far simpler than GPL and usually easier to learn
+
+** Cost of Building
+   + need to maintain DSL
+
+** Ghetto Language
+   + danger for DSL to accidentally evolve into GPL by continuously adding new
+     features 
+   + don't write your own stuff when it already exists in the wild
+
+** Blinkered Abstraction
+   + with blinkered abstraction, you spend more effort on fitting world into
+     your abstraction than other way around
+     + burn time by tring to make it fit instead of changing abstraction
+   + you should look at a DSL as smth that's evolving, not finished
+
+* 2.4 WIDER LANGUAGE PROCESSING
+  + main idea is that you can use ideas for DSL in other language processing
+    contexts
+
+* 2.5 DSL LIFECYCLE
+  + can introduce a DSL by describing framework and API, and then layering DSL
+    on top
+  + can also define DSL first
+  + some start with statements that they expect to be syntatically correct
+
+* 2.6 WHAT MAKES A GOOD DSL DESIGN?
+  + overall goal is clarity for the reader
+  + iterative design; try many alternatives
+  + don't be afraid to use jargon of domain in DSL
+    + enhances communication within domain, doesn't necessarily need to make
+      sense to people outside of it
+  + use common conventions
+  + don't try to make DSL read like natural language
+    + can lead to syntatical sugar
+    

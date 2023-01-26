@@ -1,0 +1,50 @@
+startshape MAIN
+
+shape MAIN
+{
+    HEAD_SKIN[ hue 30 sat 0.2 b 0.95]
+    EYE[x 5.1 y 5.5 ]
+    EYE[x 6.2 y 5.4]
+    NOSE[x 5.6 y 5]
+    HAIR[x 5.6 y 7  hue 225 sat 0.7 b 0.6 ]
+    HAIR[x 6.5 y 7  hue 225 sat 0.7 b 0.6 ]
+    HAIR[x 7.3 y 6.5  hue 225 sat 0.7 b 0.6 ]
+    MOUTH[x 5.6 y 4.5]
+
+}
+
+shape HEAD_SKIN
+{
+    CIRCLE[ x 6 y 5 size 3 skew 0 10]
+    CIRCLE[ x 6 y 6 size 3 skew 0 5]
+    CIRCLE[ x 6.3 y 5.9 size 3.2]
+}
+
+shape EYE 
+{
+    SQUARE[size 0.2]
+}
+
+shape NOSE
+{
+    SQUARE[size 0.05]
+}
+
+shape MOUTH
+{
+    CIRCLE[size 0.5]
+}
+shape HAIR
+{
+   loop 4 [r 90] CURLS [r -15…15 x 0.9 s 0.9 1.8]
+   HAIR [ r 14 s 0.92 hue 0.12 60  ]
+}
+
+shape CURLS
+{
+	CIRCLE []
+	CIRCLE [ s 0.975 x -0.025 hue 0.1 60  ]
+	CIRCLE [ s 0.95 x -0.05 hue 0.2 60  ]
+	CIRCLE [ s 0.925 x -0.075 hue 0.3 60  ]
+	CIRCLE [ s 0.90 x -0.10 hue 0.4 60  ]
+}
